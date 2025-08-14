@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <title>Portifólio - Van Gogh</title>
+</head>
+<body>
+    <header>
+        <img src="imagens/Vincent_van_Gogh_-_Self-Portrait_-_Google_Art_Project_(454045).jpg" width="250vh" alt="eu">
+        <br>
+        <h1>Van Gogh</h1>
+
+        <h2> Pintor, Desenhista e Gravurista</h2>
+
+        <nav>
+            <a href="#apresentacao">Apresentação</a>
+            <a href="#habilidades">Abilidades</a>
+            <a href="#trabalhos">Pinturas</a>
+        </nav>
+
+        <div id="apresentacao">
+            <div class="apresentacao-bg"></div>
+            <h3><a name="apresentacao"></a>APRESENTAÇÃO:</h3>
+            <p>Vincent van Gogh (1853–1890) foi um pintor pós-impressionista holandês, famoso por obras como Noite Estrelada e Girassóis. Produziu mais de 2.000 trabalhos em apenas 10 anos, com cores intensas e pinceladas expressivas. Apesar de não ter reconhecimento em vida, tornou-se um dos artistas mais influentes da história da arte.</p>
+        </div>
+
+    </header>
+
+    <main>
+        <a name="habilidades"></a>
+<section id="skills">
+            <h1>HABILIDADES</h1>
+            <div class="skills-bg"></div>
+        
+                    <li>Uso expressivo da cor.</li>
+                    <li>Composição criativa.</li>
+                    <li>Expressão emocional.</li>
+                    <li>Domínio do desenho</li>
+                    <li>Domínio da pintura</li>
+                </ul>
+            </div>
+        </section>
+            <a name="trabalhos"></a>
+        <section id="works">
+            <div class="works-bg"></div>
+            <iframe id="works-audio" width="0" height="0" style="display:none" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/z3nitsu_baian0/iris-lo-fi-z3ni&auto_play=false"></iframe>
+            <h1>TRABALHOS PUBLICADOS</h1>
+            <ul>
+                <li>
+                    <a href="https://www.vangoghmuseum.nl/en/collection?q=star&OnView=true" target="_blank">Museu virtual do Van Gogh.</a>
+                </li>
+            </ul>
+        </section>
+
+        <footer>
+            <h1>© Van Gogh</h1>
+            <p>Contact me</p>
+            <a href="https://www.vangoghmuseum.nl/pt/planeje-sua-visita" target="_blank" ><img src="imagens/logo.svg" width="30px" alt="instagram">: Museu Van Gogh</a>
+            <p>+31 20 570 5200</p>
+            <p>Museu Van Gogh</p>
+        </footer>
+
+        <script>
+        document.addEventListener('mousemove', function(e) {
+            const x = e.clientX + 'px';
+            const y = e.clientY + 'px';
+            document.body.style.setProperty('--x', x);
+            document.body.style.setProperty('--y', y);
+        });
+
+        // Animaçao para imagem de fundo
+        function toggleApresentacaoBg(entries) {
+            entries.forEach(entry => {
+                const apresentacao = document.getElementById('apresentacao');
+                if (entry.isIntersecting) {
+                    apresentacao.classList.add('in-view');
+                } else {
+                    apresentacao.classList.remove('in-view');
+                }
+            });
+        }
+        const observer = new IntersectionObserver(toggleApresentacaoBg, { threshold: 0.5 });
+        observer.observe(document.getElementById('apresentacao'));
+
+        function toggleInView(entries, el) {
+            entries.forEach(entry => {
+                if (!el) return;
+                if (entry.isIntersecting) {
+                    el.classList.add('in-view');
+                } else {
+                    el.classList.remove('in-view');
+                }
+            });
+        }
+        const apresentacaoEl = document.getElementById('apresentacao');
+        if (apresentacaoEl) {
+            const observer = new IntersectionObserver((entries) => toggleInView(entries, apresentacaoEl), { threshold: 0.5 });
+            observer.observe(apresentacaoEl);
+        }
+        const skillsEl = document.getElementById('skills');
+        if (skillsEl) {
+            const observerSkills = new IntersectionObserver((entries) => toggleInView(entries, skillsEl), { threshold: 0.5 });
+            observerSkills.observe(skillsEl);
+        }
+        // trbalhos
+        const worksEl = document.getElementById('works');
+        if (worksEl) {
+            const observerWorks = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        worksEl.classList.add('in-view');
+                        if (!worksAudioStarted) {
+                        }
+                    } else {
+                        worksEl.classList.remove('in-view');
+                    }
+                });
+            }, { threshold: 0.5 });
+            observerWorks.observe(worksEl);
+        }
+        </script>
+</body>
+</html>
