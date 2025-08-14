@@ -1,2 +1,2 @@
 # Portif-lio-Van-Gogh
-Portifólio do Van Gogh
+Portifólio do pintor Van Gogh
